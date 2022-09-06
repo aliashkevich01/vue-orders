@@ -53,12 +53,17 @@ export default {
     },
     removeOrder() {
       const result = [];
+      let isDeleted = false;
       for (let i = 0; i < this.products.length; i++) {
         if (this.products[i].id !== this.products[this.$route.params.id].id) {
           result.push(this.products[i]);
-          this.$store.commit("setProducts", result);
+        } else if (isDeleted) {
+          result.push(this.products[i]);
+        } else {
+          isDeleted = !isDeleted;
         }
       }
+      this.$store.commit("setProducts", result);
       this.$router.back();
     },
   },
