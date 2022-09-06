@@ -1,5 +1,4 @@
 <template>
-  <p>AAAAAAAAAA</p>
+  <input type="text" />
 </template>
-
 <style scoped></style>
