@@ -6,6 +6,9 @@
       :packageName="this.products[this.$route.params.id].packageName"
       :calories="this.products[this.$route.params.id].packageCalories"
     />
+    <progress-bar
+      :date="this.products[this.$route.params.id].deliveries[0].date"
+    />
     <h4 class="deliveries-header">Доставки</h4>
     <div
       class="deliveries-wrapper"
@@ -29,8 +32,9 @@ import OrderHead from "../components/OrderHead.vue";
 import DeliveryInfo from "../components/DeliveryInfo.vue";
 import DeleteIcon from "../components/DeleteIcon.vue";
 import AddIcon from "../components/AddIcon.vue";
+import ProgressBar from "../components/ProgressBar.vue";
 export default {
-  components: { OrderHead, DeliveryInfo, DeleteIcon, AddIcon },
+  components: { OrderHead, DeliveryInfo, DeleteIcon, AddIcon, ProgressBar },
   data() {
     return {
       products: this.$store.state.all,

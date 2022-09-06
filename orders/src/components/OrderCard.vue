@@ -1,33 +1,40 @@
 <template>
   <div class="wrapper-top" @click="handleClick" v-bind:id="props.idx">
     <order-head
-      :date="delivery.date"
+      :date="firstDelivery.date"
       :packageName="props.item.item.packageName"
       :calories="props.item.item.packageCalories"
+    />
+    <progress-bar
+      :firstDate="firstDelivery.date"
+      :lastDate="lastDelivery.date"
     />
     <div class="main-info">
       <div class="left-block">
         <p>
-          {{ new Date(Date.parse(delivery.date)).getDate() }}
+          {{ new Date().getDate() }}
         </p>
-        {{ MONTHS[new Date(Date.parse(delivery.date)).getMonth()].slice(0, 3) }}
+        {{ MONTHS[new Date().getMonth()].slice(0, 3) }}
       </div>
       <div class="right-block">
         <p>
           Ближайший день доставки - в
           <span class="blue">{{
-            DAYS[new Date(Date.parse(delivery.date)).getDay()]
+            DAYS[new Date(Date.parse(firstDelivery.date)).getDay()]
           }}</span>
         </p>
-        <p>{{ delivery.interval }}</p>
+        <p>{{ firstDelivery.interval }}</p>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-const delivery = props.item.item.deliveries[0];
+const firstDelivery = props.item.item.deliveries[0];
+const lastDelivery =
+  props.item.item.deliveries[props.item.item.deliveries.length - 1];
 import { MONTHS, DAYS } from "../constants/index.js";
 import OrderHead from "./OrderHead.vue";
+import ProgressBar from "../components/ProgressBar.vue";
 const props = defineProps({
   item: Object,
   idx: Number,
