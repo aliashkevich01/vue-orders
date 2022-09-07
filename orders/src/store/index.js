@@ -5,14 +5,6 @@ const store = createStore({
   state: {
     all: [],
   },
-  getters: {
-    getAmountOfOrders(state) {
-      return state.all.length;
-    },
-    getAll(state) {
-      return state.all;
-    },
-  },
   actions: {
     getAllProducts({ commit }, id) {
       const result = findOrdersById(id);
