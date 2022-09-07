@@ -22,7 +22,6 @@ const store = createStore({
   mutations: {
     setProducts(state, products) {
       state.all = products;
-      console.log(state.all);
     },
   },
 });

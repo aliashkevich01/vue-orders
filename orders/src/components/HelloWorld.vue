@@ -1,5 +1,0 @@
-<template>
-  <p>AAAAAAAAAA</p>
-</template>
-
-<style scoped></style>

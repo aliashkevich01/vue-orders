@@ -17,13 +17,15 @@
     >
       <delivery-info :date="item.date" :interval="item.interval" />
     </div>
-    <div class="ux-block" @click="addOrder">
-      <p>Дублировать</p>
-      <add-icon />
-    </div>
-    <div class="ux-block" @click="removeOrder">
-      <p>Удалить</p>
-      <delete-icon />
+    <div class="ux-wrap">
+      <div class="ux-block" @click="addOrder">
+        <p>Дублировать</p>
+        <add-icon />
+      </div>
+      <div class="ux-block" @click="removeOrder">
+        <p>Удалить</p>
+        <delete-icon />
+      </div>
     </div>
   </main>
 </template>
@@ -69,7 +71,6 @@ export default {
   },
   mounted() {
     this.products = this.$store.state.all;
-    console.log(this.products);
   },
 };
 </script>
@@ -89,8 +90,15 @@ export default {
 .deliveries-wrapper {
   margin: 35px 0;
 }
-.ux-block {
+.ux-wrap {
+  border-radius: 10px;
   background-color: #f5f5f5;
+  margin: 0 20px;
+}
+.ux-block:first-child {
+  border-bottom: 1px solid #d6d6d6;
+}
+.ux-block {
   padding: 17px;
   color: #000;
   cursor: pointer;

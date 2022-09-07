@@ -36,7 +36,7 @@ export default {
 .order-header {
   font-size: 22px;
   font-weight: 600;
-  margin-top: 10vh;
+  margin-top: 20px;
   margin-left: 30px;
 }
 .order-block {

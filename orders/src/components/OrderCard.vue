@@ -2,8 +2,8 @@
   <div class="wrapper-top" @click="handleClick" v-bind:id="props.idx">
     <order-head
       :date="firstDelivery.date"
-      :packageName="props.item.item.packageName"
-      :calories="props.item.item.packageCalories"
+      :packageName="packageName"
+      :calories="packageCalories"
     />
     <progress-bar
       :firstDate="firstDelivery.date"
@@ -23,15 +23,15 @@
             DAYS[new Date(Date.parse(firstDelivery.date)).getDay()]
           }}</span>
         </p>
-        <p>{{ firstDelivery.interval }}</p>
+        <p>{{ lastDelivery.interval }}</p>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-const firstDelivery = props.item.item.deliveries[0];
-const lastDelivery =
-  props.item.item.deliveries[props.item.item.deliveries.length - 1];
+const { deliveries, packageName, packageCalories } = props.item.item;
+const firstDelivery = deliveries[0];
+const lastDelivery = deliveries[deliveries.length - 1];
 import { MONTHS, DAYS } from "../constants/index.js";
 import OrderHead from "./OrderHead.vue";
 import ProgressBar from "../components/ProgressBar.vue";
@@ -53,6 +53,7 @@ export default {
 <style scoped>
 .wrapper-top {
   cursor: pointer;
+  margin: 10px 0;
 }
 .card-header {
   font-weight: 700;
@@ -65,6 +66,9 @@ export default {
   justify-content: space-between;
   gap: 10px;
   padding: 25px;
+}
+.main-info {
+  margin-top: 10px;
 }
 .gray {
   color: #b1b1b1;

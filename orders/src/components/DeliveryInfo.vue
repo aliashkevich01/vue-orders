@@ -21,7 +21,8 @@ export default {
 </script>
 <style scoped>
 .delivery-info {
-  width: 100%;
+  width: 85%;
+  margin: 0 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
