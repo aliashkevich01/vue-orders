@@ -4,13 +4,16 @@
       Мои заказы <span class="header-gray">{{ this.products.length }}</span>
     </h2>
     <div class="order-block">
-      <div
-        class="wrapper"
-        v-for="(item, index) in this.products"
-        :key="item.id"
-      >
-        <order-card :item="{ item }" :idx="index" />
+      <div v-if="this.products.length">
+        <div
+          class="wrapper"
+          v-for="(item, index) in this.products"
+          :key="item.id"
+        >
+          <order-card :item="{ item }" :idx="index" />
+        </div>
       </div>
+      <div v-else>No info</div>
     </div>
   </main>
 </template>
@@ -52,6 +55,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 20px 0;
 }
 .header-gray {
   color: #b1b1b1;

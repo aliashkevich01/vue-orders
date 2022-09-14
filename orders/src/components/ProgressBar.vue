@@ -8,6 +8,8 @@
       :style="
         Date.parse(props.lastDate) < new Date()
           ? { width: '100%' }
+          : Date.parse(props.lastDate) > new Date()
+          ? { width: '0' }
           : {
               width: `${
                 ((Date.parse(props.lastDate) - new Date()) * 100) /
