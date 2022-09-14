@@ -2,17 +2,11 @@
   <section class="auth-wrap">
     <h1 class="auth-header">Добро пожаловать!</h1>
     <form class="auth-form" @submit.prevent>
-      <input
-        type="text"
-        v-model="userInfo.login"
-        placeholder="Логин"
-        class="text-input"
-      />
-      <input
+      <auth-input type="text" v-model="userInfo.login" placeholder="Логин" />
+      <auth-input
         type="password"
         v-model="userInfo.password"
         placeholder="Пароль"
-        class="text-input"
       />
       <button @click="auth" class="submit-btn">ВОЙТИ</button>
     </form>
@@ -20,7 +14,9 @@
 </template>
 <script>
 import users from "../../src/clients.json";
+import AuthInput from "../components/AuthInput.vue";
 export default {
+  components: { AuthInput },
   data() {
     return {
       userInfo: {
@@ -46,7 +42,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .auth-section {
   display: flex;
   flex-direction: column;
@@ -68,16 +64,9 @@ export default {
   place-items: center;
   gap: 12px;
 }
-.text-input,
 .submit-btn {
   width: 100%;
   border-radius: 6px;
-}
-.text-input {
-  border: 1.5px solid #1e6fb9;
-  padding: 17px 11px;
-  font-size: 18px;
-  outline: none;
 }
 .submit-btn {
   margin-top: 72px;
